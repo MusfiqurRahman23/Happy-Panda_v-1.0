@@ -99,10 +99,10 @@
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
-                                            $e=$row00["ename"];
-                                            $e=$row00["eemail"];
-                                            echo "<option value='$e'><br/>";
-                                            echo "<option value='$e'><br/>";
+                                            $d=$row00["ename"];
+                                            $c=$row00["eemail"];
+                                            echo "<option value='$d'><br/>";
+                                            echo "<option value='$c'><br/>";
                                         };
         
                                     echo ' </datalist>';

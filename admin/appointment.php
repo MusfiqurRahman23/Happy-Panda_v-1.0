@@ -49,7 +49,7 @@
                         <table border="0" class="profile-container">
                             <tr>
                                 <td width="30%" style="padding-left:20px" >
-                                    <img src="../img/user.png" alt="" width="100%" style="border-radius:50%">
+                                    <img src="../images/user.png" alt="" width="100%" style="border-radius:50%">
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
@@ -72,7 +72,7 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="employees.php" class="non-style-link-menu "><div><p class="menu-text">Doctors</p></a></div>
+                        <a href="employees.php" class="non-style-link-menu "><div><p class="menu-text">Employees</p></a></div>
                     </td>
                 </tr>
                 <tr class="menu-row" >
@@ -161,11 +161,11 @@
 
                         </td>
                         <td width="5%" style="text-align: center;">
-                        Doctor:
+                        Employee:
                         </td>
                         <td width="30%">
-                        <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
-                            <option value="" disabled selected hidden>Choose Doctor Name from the list</option><br/>
+                        <select name="eid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
+                            <option value="" disabled selected hidden>Choose Employee Name from the list</option><br/>
                                 
                             <?php 
                              
@@ -207,9 +207,9 @@
 
 
                         $sqlpt2="";
-                        if(!empty($_POST["docid"])){
-                            $docid=$_POST["docid"];
-                            $sqlpt2=" doctor.docid=$docid ";
+                        if(!empty($_POST["eid"])){
+                            $eid=$_POST["docid"];
+                            $sqlpt2=" employee.eid=$eid ";
                         }
                         //echo $sqlpt2;
                         //echo $sqlpt1;
@@ -256,7 +256,7 @@
                                
                                 
                                 <th class="table-headin">
-                                    Doctor
+                                    Employee
                                 </th>
                                 <th class="table-headin">
                                     
@@ -313,10 +313,10 @@
                                     $appoid=$row["appoid"];
                                     $scheduleid=$row["scheduleid"];
                                     $title=$row["title"];
-                                    $docname=$row["ename"];
+                                    $ename=$row["ename"];
                                     $scheduledate=$row["scheduledate"];
                                     $scheduletime=$row["scheduletime"];
-                                    $pname=$row["cname"];
+                                    $cname=$row["cname"];
                                     $apponum=$row["apponum"];
                                     $appodate=$row["appodate"];
                                     echo '<tr >
@@ -396,33 +396,33 @@
 
                             <tr>
                                 <td>
-                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Add New Session.</p><br>
+                                    <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">Add New Order.</p><br>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
                                 <form action="add-session.php" method="POST" class="add-new-form">
-                                    <label for="title" class="form-label">Session Title : </label>
+                                    <label for="title" class="form-label">Order Details : </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="title" class="input-text" placeholder="Name of this Session" required><br>
+                                    <input type="text" name="title" class="input-text" placeholder="Name of this Order" required><br>
                                 </td>
                             </tr>
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Select Doctor: </label>
+                                    <label for="eid" class="form-label">Select Employee: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <select name="docid" id="" class="box" >
-                                    <option value="" disabled selected hidden>Choose Doctor Name from the list</option><br/>';
+                                    <select name="eid" id="" class="box" >
+                                    <option value="" disabled selected hidden>Choose Employee Name from the list</option><br/>';
                                         
         
-                                        $list11 = $database->query("select  * from  doctor;");
+                                        $list11 = $database->query("select  * from  employee;");
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
@@ -439,7 +439,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Number of Patients/Appointment Numbers : </label>
+                                    <label for="nop" class="form-label">Number of Customers/Order Numbers : </label>
                                 </td>
                             </tr>
                             <tr>
@@ -535,7 +535,7 @@
             </div>
             '; 
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where docid='$id'";
+            $sqlmain= "select * from employee where eid='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
             $name=$row["ename"];
@@ -621,7 +621,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">
-                                    <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                    <a href="employees.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
                                 
                                     
                                 </td>
