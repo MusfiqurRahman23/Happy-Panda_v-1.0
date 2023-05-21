@@ -25,9 +25,6 @@
 </head>
 <body>
     <?php
-
-    //learn from w3schools.com
-
     session_start();
 
     if(isset($_SESSION["user"])){
@@ -39,8 +36,6 @@
         header("location: ../login.php");
     }
     
-
-    //import database
     include("../connection.php");
 
     
@@ -75,14 +70,14 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Employees</p></a></div>
+                        <a href="employees.php" class="non-style-link-menu "><div><p class="menu-text">Employees</p></a></div>
                     </td>
                 </tr>
                 
                 
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="patient.php" class="non-style-link-menu"><div><p class="menu-text">Customers</p></a></div>
+                        <a href="customer.php" class="non-style-link-menu"><div><p class="menu-text">Customers</p></a></div>
                     </td>
                 </tr>
             </table>
@@ -94,7 +89,7 @@
                             
                             <td colspan="2" class="nav-bar" >
                                 
-                                <form action="doctors.php" method="post" class="header-search">
+                                <form action="employees.php" method="post" class="header-search">
         
                                     <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Employee name or Email" list="employees">&nbsp;&nbsp;
                                     
@@ -104,10 +99,10 @@
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
-                                            $d=$row00["ename"];
-                                            $c=$row00["eemail"];
-                                            echo "<option value='$d'><br/>";
-                                            echo "<option value='$c'><br/>";
+                                            $e=$row00["ename"];
+                                            $e=$row00["eemail"];
+                                            echo "<option value='$e'><br/>";
+                                            echo "<option value='$e'><br/>";
                                         };
         
                                     echo ' </datalist>';
@@ -141,7 +136,7 @@
                                 </p>
                             </td>
                             <td width="10%">
-                                <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                                <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../images/calendar.svg" width="100%"></button>
                             </td>
         
         
@@ -167,7 +162,7 @@
                                                     Employees &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                         </div>
-                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/doctors-hover.svg');"></div>
+                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../images/icons/doctors-hover.svg');"></div>
                                     </div>
                                 </td>
                                 <td style="width: 25%;">
@@ -180,7 +175,7 @@
                                                     Customers &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                                 </div>
                                         </div>
-                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/patients-hover.svg');"></div>
+                                                <div class="btn-icon-back dashboard-icons" style="background-image: url('../images/icons/patients-hover.svg');"></div>
                                     </div>
                                 </td>
                                
