@@ -71,7 +71,7 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor ">
-                        <a href="doctors.php" class="non-style-link-menu "><div><p class="menu-text">Employees</p></a></div>
+                        <a href="employees.php" class="non-style-link-menu "><div><p class="menu-text">Employees</p></a></div>
                     </td>
                 </tr>
                 

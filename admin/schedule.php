@@ -213,7 +213,7 @@
                         }
                         //echo $sqlpt2;
                         //echo $sqlpt1;
-                        $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join employee on schedule.eid=employee.eid ";
+                        $sqlmain= "select schedule.scheduleid,schedule.title,employee.ename,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join employee on schedule.eid=employee.eid ";
                         $sqllist=array($sqlpt1,$sqlpt2);
                         $sqlkeywords=array(" where "," and ");
                         $key2=0;
@@ -230,7 +230,7 @@
                         
                         //
                     }else{
-                        $sqlmain= "select schedule.scheduleid,schedule.title,employee.ename,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.eid=employee.eid  order by schedule.scheduledate desc";
+                        $sqlmain= "select schedule.scheduleid,schedule.title,employee.ename,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join employee on schedule.eid=employee.eid  order by schedule.scheduledate desc";
 
                     }
 
@@ -253,7 +253,7 @@
                                 </th>
                                 
                                 <th class="table-headin">
-                                    Doctor
+                                    Employee
                                 </th>
                                 <th class="table-headin">
                                     
@@ -301,7 +301,7 @@
                                     $row=$result->fetch_assoc();
                                     $scheduleid=$row["scheduleid"];
                                     $title=$row["title"];
-                                    $docname=$row["ename"];
+                                    $ename=$row["ename"];
                                     $scheduledate=$row["scheduledate"];
                                     $scheduletime=$row["scheduletime"];
                                     $nop=$row["nop"];
@@ -399,7 +399,7 @@
                                     <option value="" disabled selected hidden>Choose Employee Name from the list</option><br/>';
                                         
         
-                                        $list11 = $database->query("select  * from  doctor order by docname asc;");
+                                        $list11 = $database->query("select  * from  employee order by ename asc;");
         
                                         for ($y=0;$y<$list11->num_rows;$y++){
                                             $row00=$list11->fetch_assoc();
@@ -508,10 +508,10 @@
             </div>
             '; 
         }elseif($action=='view'){
-            $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where  schedule.scheduleid=$id";
+            $sqlmain= "select schedule.scheduleid,schedule.title,employee.ename,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join employee on schedule.eid=employee.eid  where  schedule.scheduleid=$id";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
-            $docname=$row["ename"];
+            $ename=$row["ename"];
             $scheduleid=$row["scheduleid"];
             $title=$row["title"];
             $scheduledate=$row["scheduledate"];
@@ -521,7 +521,7 @@
             $nop=$row['nop'];
 
 
-            $sqlmain12= "select * from appointment inner join patient on patient.pid=appointment.cid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
+            $sqlmain12= "select * from appointment inner join csutomer on customer.cid=appointment.cid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
             $result12= $database->query($sqlmain12);
             echo '
             <div id="popup1" class="overlay">
@@ -556,12 +556,12 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="Email" class="form-label">Doctor of this session: </label>
+                                    <label for="Email" class="form-label">Employee of this order: </label>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                '.$docname.'<br><br>
+                                '.$ename.'<br><br>
                                 </td>
                             </tr>
                             <tr>
@@ -586,7 +586,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="spec" class="form-label"><b>Patients that Already registerd for this session:</b> ('.$result12->num_rows."/".$nop.')</label>
+                                    <label for="spec" class="form-label"><b>Customers that Already registerd for this order:</b> ('.$result12->num_rows."/".$nop.')</label>
                                     <br><br>
                                 </td>
                             </tr>
@@ -600,10 +600,10 @@
                                  <thead>
                                  <tr>   
                                         <th class="table-headin">
-                                             Patient ID
+                                             Customer ID
                                          </th>
                                          <th class="table-headin">
-                                             Patient name
+                                             Customer name
                                          </th>
                                          <th class="table-headin">
                                              
@@ -633,7 +633,7 @@
                                              
                                              <br>
                                              <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
-                                             <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Appointments &nbsp;</font></button>
+                                             <a class="non-style-link" href="appointment.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Orders &nbsp;</font></button>
                                              </a>
                                              </center>
                                              <br><br><br><br>
