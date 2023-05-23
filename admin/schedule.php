@@ -224,11 +224,11 @@
                                 $key2++;
                             };
                         };
-                        //echo $sqlmain;
+                        
 
                         
                         
-                        //
+                        
                     }else{
                         $sqlmain= "select schedule.scheduleid,schedule.title,employee.ename,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join employee on schedule.eid=employee.eid  order by schedule.scheduledate desc";
 
@@ -262,7 +262,7 @@
                                 </th>
                                 <th class="table-headin">
                                     
-                                Max num that can be booked
+                                Max num that can be ordered
                                     
                                 </th>
                                 
@@ -384,7 +384,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <input type="text" name="title" class="input-text" placeholder="Name of this Session" required><br>
+                                    <input type="text" name="title" class="input-text" placeholder="Name of this Order" required><br>
                                 </td>
                             </tr>
                             <tr>
@@ -416,7 +416,7 @@
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
-                                    <label for="nop" class="form-label">Number of Patients/Appointment Numbers : </label>
+                                    <label for="nop" class="form-label">Number of Customers/Order Numbers : </label>
                                 </td>
                             </tr>
                             <tr>

@@ -90,7 +90,7 @@
                 </tr>
                 <tr class="menu-row">
                     <td class="menu-btn menu-icon-doctor">
-                        <a href="doctors.php" class="non-style-link-menu"><div><p class="menu-text">All Foods</p></a></div>
+                        <a href="employees.php" class="non-style-link-menu"><div><p class="menu-text">All Foods</p></a></div>
                     </td>
                 </tr>
                 
@@ -146,7 +146,7 @@
                                 </p>
                             </td>
                             <td width="10%">
-                                <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
+                                <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../images/calendar.svg" width="100%"></button>
                             </td>
         
         
@@ -160,19 +160,19 @@
                         <td >
                             <h3>Welcome!</h3>
                             <h1><?php echo $username  ?>.</h1>
-                            <p>Haven't any idea about doctors? no problem let's jumping to 
-                                <a href="doctors.php" class="non-style-link"><b>"All Doctors"</b></a> section or 
-                                <a href="schedule.php" class="non-style-link"><b>"Sessions"</b> </a><br>
-                                Track your past and future orders history.<br>Also find out the expected arrival time of your food or parcel.<br><br>
+                            <p>Haven't any idea about our foods? no problem let's jumping to 
+                                <a href="employees.php" class="non-style-link"><b>"All Employees"</b></a> section or 
+                                <a href="schedule.php" class="non-style-link"><b>"Orders"</b> </a><br>
+                                Track your past and future orders history.<br>Also, find out the expected arrival time of your food or parcel.<br><br>
                             </p>
                             
                             <h3>Channel Food order Here</h3>
                             <form action="schedule.php" method="post" style="display: flex">
 
-                                <input type="search" name="search" class="input-text " placeholder="Search Doctor and We will Find The Session Available" list="doctors" style="width:45%;">&nbsp;&nbsp;
+                                <input type="search" name="search" class="input-text " placeholder="Search Food and We will Find The Available Food" list="employees" style="width:45%;">&nbsp;&nbsp;
                                 
                                 <?php
-                                    echo '<datalist id="doctors">';
+                                    echo '<datalist id="employees">';
                                     $list11 = $database->query("select  ename,eemail from  employee;");
     
                                     for ($y=0;$y<$list11->num_rows;$y++){
@@ -326,7 +326,7 @@
                                         
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
-                                                $sqlmain= "select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join customer on customer.cid=appointment.cid inner join employee on schedule.docid=doctor.docid  where  customer.cid=$userid  and schedule.scheduledate>='$today' order by schedule.scheduledate asc";
+                                                $sqlmain= "select * from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join customer on customer.cid=appointment.cid inner join employee on schedule.eid=employee.eid  where  customer.cid=$userid  and schedule.scheduledate>='$today' order by schedule.scheduledate asc";
                                                 //echo $sqlmain;
                                                 $result= $database->query($sqlmain);
                 
@@ -339,7 +339,7 @@
                                                     
                                                     <br>
                                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">Nothing to show here!</p>
-                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Channel a Doctor &nbsp;</font></button>
+                                                    <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Channel a Employee &nbsp;</font></button>
                                                     </a>
                                                     </center>
                                                     <br><br><br><br>
@@ -353,7 +353,7 @@
                                                     $scheduleid=$row["scheduleid"];
                                                     $title=$row["title"];
                                                     $apponum=$row["apponum"];
-                                                    $docname=$row["ename"];
+                                                    $ename=$row["ename"];
                                                     $scheduledate=$row["scheduledate"];
                                                     $scheduletime=$row["scheduletime"];
                                                    
@@ -365,7 +365,7 @@
                                                         substr($title,0,30)
                                                         .'</td>
                                                         <td>
-                                                        '.substr($docname,0,20).'
+                                                        '.substr($ename,0,20).'
                                                         </td>
                                                         <td style="text-align:center;">
                                                             '.substr($scheduledate,0,10).' '.substr($scheduletime,0,5).'
