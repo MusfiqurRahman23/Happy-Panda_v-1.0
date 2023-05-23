@@ -53,7 +53,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle">admin@gmail.com</p>
                                 </td>
                             </tr>
                             <tr>
@@ -164,7 +164,7 @@
                         Employee:
                         </td>
                         <td width="30%">
-                        <select name="docid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
+                        <select name="eid" id="" class="box filter-container-items" style="width:90% ;height: 37px;margin: 0;" >
                             <option value="" disabled selected hidden>Choose Employee Name from the list</option><br/>
                                 
                             <?php 
@@ -208,7 +208,7 @@
 
                         $sqlpt2="";
                         if(!empty($_POST["eid"])){
-                            $docid=$_POST["eid"];
+                            $eid=$_POST["eid"];
                             $sqlpt2=" employee.eid=$eid ";
                         }
                         //echo $sqlpt2;
@@ -390,7 +390,7 @@
                             <tr>
                                 
                                 <td class="label-td" colspan="2">
-                                    <label for="docid" class="form-label">Select Employee: </label>
+                                    <label for="eid" class="form-label">Select Employee: </label>
                                 </td>
                             </tr>
                             <tr>

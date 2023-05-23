@@ -184,7 +184,7 @@
                                 <th class="table-headin">
                                     
                                 
-                                Doctor Name
+                                Employee Name
                                 
                                 </th>
                                 <th class="table-headin">
@@ -302,7 +302,7 @@
             </div>
             ';
         }elseif($action=='view'){
-            $sqlmain= "select * from doctor where eid='$id'";
+            $sqlmain= "select * from employee where eid='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
             $name=$row["ename"];
@@ -567,7 +567,7 @@
         ';
             }
         }elseif($action=='edit'){
-            $sqlmain= "select * from doctor where eid='$id'";
+            $sqlmain= "select * from employee where eid='$id'";
             $result= $database->query($sqlmain);
             $row=$result->fetch_assoc();
             $name=$row["ename"];
@@ -613,7 +613,7 @@
                                     </tr>
                                     <tr>
                                         <td class="label-td" colspan="2">
-                                            <form action="edit-doc.php" method="POST" class="add-new-form">
+                                            <form action="edit-emp.php" method="POST" class="add-new-form">
                                             <label for="Email" class="form-label">Email: </label>
                                             <input type="hidden" value="'.$id.'" name="id00">
                                             <input type="hidden" name="oldemail" value="'.$email.'" >

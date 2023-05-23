@@ -16,7 +16,7 @@
         //import database
         include("../connection.php");
         $title=$_POST["title"];
-        $docid=$_POST["eid"];
+        $eid=$_POST["eid"];
         $nop=$_POST["nop"];
         $date=$_POST["date"];
         $time=$_POST["time"];

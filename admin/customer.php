@@ -99,7 +99,7 @@
                             <input type="search" name="search" class="input-text header-searchbar" placeholder="Search Customer name or Email" list="customer">&nbsp;&nbsp;
                             
                             <?php
-                                echo '<datalist id="patient">';
+                                echo '<datalist id="employee">';
                                 $list11 = $database->query("select  cname,cemail from customer;");
 
                                 for ($y=0;$y<$list11->num_rows;$y++){

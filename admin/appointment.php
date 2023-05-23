@@ -53,7 +53,7 @@
                                 </td>
                                 <td style="padding:0px;margin:0px;">
                                     <p class="profile-title">Administrator</p>
-                                    <p class="profile-subtitle">admin@edoc.com</p>
+                                    <p class="profile-subtitle">admin@gmail.com</p>
                                 </td>
                             </tr>
                             <tr>
@@ -87,7 +87,7 @@
                 </tr>
                 <tr class="menu-row" >
                     <td class="menu-btn menu-icon-patient">
-                        <a href="customer.php" class="non-style-link-menu"><div><p class="menu-text">Patients</p></a></div>
+                        <a href="customer.php" class="non-style-link-menu"><div><p class="menu-text">Customers</p></a></div>
                     </td>
                 </tr>
 
@@ -208,12 +208,12 @@
 
                         $sqlpt2="";
                         if(!empty($_POST["eid"])){
-                            $eid=$_POST["docid"];
+                            $eid=$_POST["eid"];
                             $sqlpt2=" employee.eid=$eid ";
                         }
                         //echo $sqlpt2;
                         //echo $sqlpt1;
-                        $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,employee.ename,customer.cname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.cid=appointment.cid inner join employee on schedule.eid=employee.eid";
+                        $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,employee.ename,customer.cname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join customer on customer.cid=appointment.cid inner join employee on schedule.eid=employee.eid";
                         $sqllist=array($sqlpt1,$sqlpt2);
                         $sqlkeywords=array(" where "," and ");
                         $key2=0;
@@ -329,7 +329,7 @@
                                         
                                         </td>
                                         <td>
-                                        '.substr($docname,0,25).'
+                                        '.substr($ename,0,25).'
                                         </td>
                                         <td>
                                         '.substr($title,0,15).'
@@ -521,7 +521,7 @@
                         <a class="close" href="appointment.php">&times;</a>
                         <div class="content">
                             You want to delete this record<br><br>
-                            Patient Name: &nbsp;<b>'.substr($nameget,0,40).'</b><br>
+                            Customer Name: &nbsp;<b>'.substr($nameget,0,40).'</b><br>
                             Appointment number &nbsp; : <b>'.substr($apponum,0,40).'</b><br><br>
                             
                         </div>
@@ -554,7 +554,7 @@
                         <h2></h2>
                         <a class="close" href="employees.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            Food Order Web App<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
